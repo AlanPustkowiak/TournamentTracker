@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary
 {
-    public interface iDataConnection
+    public enum DatabaseType
     {
-        PrizeModel CreatePrize(PrizeModel model);
+        Sql,
+        TextFile
     }
 }

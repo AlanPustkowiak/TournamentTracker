@@ -10,5 +10,6 @@ namespace TrackerLibrary.DataAccess
     public interface iDataConnection
     {
         PrizeModel CreatePrize(PrizeModel model);
+        PersonModel CreatePerson(PersonModel model);
     }
 }

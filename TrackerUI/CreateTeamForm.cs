@@ -17,9 +17,19 @@ namespace TrackerUI
             InitializeComponent();
         }
 
-        private void firstNameValue_TextChanged(object sender, EventArgs e)
+        /*private void firstNameValue_TextChanged(object sender, EventArgs e)
         {
 
+        }*/
+
+        private void createNewMemberButton_Click(object sender, EventArgs e)
+        {
+            //TODO create function
+        }
+
+        private bool ValidateForm()
+        {
+            return true;
         }
     }
 }

@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using TrackerLibrary.Models;
 
+
+// TODO - check if the destination folder exists if not then make one/ more chceck on which disk the folder is 
+
 namespace TrackerLibrary.DataAccess.TextHelpers
 {
     public static class TextConnectorProcessor

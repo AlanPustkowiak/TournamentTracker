@@ -32,7 +32,7 @@ namespace TrackerUI
             this.headerLabel = new System.Windows.Forms.Label();
             this.tournamentName = new System.Windows.Forms.Label();
             this.roundLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.roundDropDow = new System.Windows.Forms.ComboBox();
             this.unplayedOnlyChechbox = new System.Windows.Forms.CheckBox();
             this.matchupListBox = new System.Windows.Forms.ListBox();
             this.teamOneName = new System.Windows.Forms.Label();
@@ -78,13 +78,14 @@ namespace TrackerUI
             this.roundLabel.TabIndex = 2;
             this.roundLabel.Text = "Round";
             // 
-            // comboBox1
+            // roundDropDow
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(117, 79);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(181, 38);
-            this.comboBox1.TabIndex = 3;
+            this.roundDropDow.FormattingEnabled = true;
+            this.roundDropDow.Location = new System.Drawing.Point(117, 79);
+            this.roundDropDow.Name = "roundDropDow";
+            this.roundDropDow.Size = new System.Drawing.Size(181, 38);
+            this.roundDropDow.TabIndex = 3;
+            this.roundDropDow.SelectedIndexChanged += new System.EventHandler(this.roundDropDow_SelectedIndexChanged);
             // 
             // unplayedOnlyChechbox
             // 
@@ -108,6 +109,7 @@ namespace TrackerUI
             this.matchupListBox.Name = "matchupListBox";
             this.matchupListBox.Size = new System.Drawing.Size(277, 272);
             this.matchupListBox.TabIndex = 5;
+            this.matchupListBox.SelectedIndexChanged += new System.EventHandler(this.matchupListBox_SelectedIndexChanged);
             // 
             // teamOneName
             // 
@@ -210,7 +212,7 @@ namespace TrackerUI
             this.Controls.Add(this.teamOneName);
             this.Controls.Add(this.matchupListBox);
             this.Controls.Add(this.unplayedOnlyChechbox);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.roundDropDow);
             this.Controls.Add(this.roundLabel);
             this.Controls.Add(this.tournamentName);
             this.Controls.Add(this.headerLabel);
@@ -228,7 +230,7 @@ namespace TrackerUI
         private System.Windows.Forms.Label headerLabel;
         private System.Windows.Forms.Label tournamentName;
         private System.Windows.Forms.Label roundLabel;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox roundDropDow;
         private System.Windows.Forms.CheckBox unplayedOnlyChechbox;
         private System.Windows.Forms.ListBox matchupListBox;
         private System.Windows.Forms.Label teamOneName;

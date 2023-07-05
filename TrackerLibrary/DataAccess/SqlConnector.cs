@@ -12,7 +12,7 @@ namespace TrackerLibrary.DataAccess
     public class SqlConnector : iDataConnection
     {
         private const string db = "Tournament";
-        public PersonModel CreatePerson(PersonModel model)
+        public void CreatePerson(PersonModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnValue(db)))
             {
@@ -27,11 +27,10 @@ namespace TrackerLibrary.DataAccess
 
                 model.Id = p.Get<int>("@id");
 
-                return model;
             }
         }
 
-        public PrizeModel CreatePrize(PrizeModel model)
+        public void CreatePrize(PrizeModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnValue(db)))
             {
@@ -46,11 +45,10 @@ namespace TrackerLibrary.DataAccess
 
                 model.Id = p.Get<int>("@id");
 
-                return model;
             }
         }
 
-        public TeamModel CreateTeam(TeamModel model)
+        public void CreateTeam(TeamModel model)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnValue(db)))
             {
@@ -72,7 +70,6 @@ namespace TrackerLibrary.DataAccess
 
                 }
 
-                return model;
             }
         }
 

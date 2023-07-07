@@ -200,42 +200,11 @@ namespace TrackerUI
                     }
                 }
             }
+            TournamentLogic.UpdateTournamentResult(tournament);
 
-            if (teamOneScore > teamTwoScore)
-            {
-                //team one wins
-                m.Winner = m.Entries[0].TeamCompeting;
-            }
-            else if (teamTwoScore > teamOneScore)
-            {
-                m.Winner = m.Entries[1].TeamCompeting;
-            }
-            else
-            {
-                MessageBox.Show("There can't be a draw");
-            }
-
-            foreach (List<MatchupModel> round in tournament.Rounds)
-            {
-                foreach (MatchupModel rm in round)
-                {
-                    foreach (MatchupEntryModel me in rm.Entries)
-                    {
-                        if (me.ParentMatchup != null)
-                        {
-                            if (me.ParentMatchup.Id == m.Id)
-                            {
-                                me.TeamCompeting = m.Winner;
-                                GlobalConfig.Connection.UpdateMatchup(rm);
-                            } 
-                        }
-                    }
-                }
-            }
 
             LoadMatchups((int)roundDropDow.SelectedItem);
 
-            GlobalConfig.Connection.UpdateMatchup(m);
         }
     }
 }

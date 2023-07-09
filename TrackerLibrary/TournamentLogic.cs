@@ -38,9 +38,8 @@ namespace TrackerLibrary
             MarkWinnersInMatchups(toScore);
 
             AdvanceWinners(toScore, model);
-                
 
-                //GlobalConfig.Connection.UpdateMatchup(m);
+            toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
         }
 
         private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)

@@ -121,7 +121,7 @@ namespace TrackerUI
 
         private void LoadMatchup(MatchupModel m)
         {
-            for (int i = 0; i < m.Entries.Count; i++)
+            for (int i = 0; i < m.Entries.Count; i++) //TODO
             {
                 if (i == 0)
                 {
@@ -160,8 +160,42 @@ namespace TrackerUI
             LoadMatchups((int)roundDropDow.SelectedItem);
         }
 
+        private string IsValidData()
+        {
+            string output = "";
+            double teamOneScore = 0, teamTwoScore = 0;
+
+            bool scoreValid1 = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
+            bool scoreValid2 = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
+
+            if (!scoreValid1)
+            {
+                output = "The score one is not a valid number.";
+            }
+            else if (!scoreValid2)
+            {
+                output = "The score one is not a valid number.";
+            }
+            else if (teamOneScore == 0 && teamTwoScore == 0)
+            {
+                output = "You did not enter a score for either team.";
+            }
+            else if (teamOneScore == teamTwoScore)
+            {
+                output = "We do not allow ties in this app.";
+            }
+
+            return output;
+        }
+
         private void scoreButton_Click(object sender, EventArgs e)
         {
+            string errMess = IsValidData();
+            if (errMess.Length > 0)
+            {
+                MessageBox.Show($"Input error:{ errMess }");
+            }
+
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
             double teamOneScore = 0, teamTwoScore = 0;
 
@@ -200,7 +234,15 @@ namespace TrackerUI
                     }
                 }
             }
-            TournamentLogic.UpdateTournamentResult(tournament);
+            try
+            {
+                TournamentLogic.UpdateTournamentResult(tournament);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"The app had the following error: { ex.Message }");
+                return;
+            }
 
 
             LoadMatchups((int)roundDropDow.SelectedItem);

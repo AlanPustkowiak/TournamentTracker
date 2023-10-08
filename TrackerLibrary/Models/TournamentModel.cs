@@ -11,6 +11,8 @@ namespace TrackerLibrary.Models
     /// </summary>
     public class TournamentModel
     {
+        public event EventHandler<DateTime> OnTournamentComplete;
+
         /// <summary>
         /// represent the id in database
         /// </summary>
@@ -35,5 +37,10 @@ namespace TrackerLibrary.Models
         /// represent list of rounds in tournament
         /// </summary>
         public List<List<MatchupModel>> Rounds { get; set; } = new List<List<MatchupModel>>();
+
+        public void CompleteTournament()
+        {
+            OnTournamentComplete?.Invoke(this, DateTime.Now);
+        }
     }
 }
